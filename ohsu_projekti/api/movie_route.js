@@ -20,11 +20,13 @@ movieRoutes.route('/add').post(function (req, res) {
 
 // Defined get data(index or listing) route
 movieRoutes.route('/').get(function (req, res) {
+    console.log("Pääseekö tähän");
     Movie.find(function(err, movies){
     if(err){
       res.json(err);
     }
     else {
+        console.log("Pääseekö tähän");
       res.json(movies);
     }
   });

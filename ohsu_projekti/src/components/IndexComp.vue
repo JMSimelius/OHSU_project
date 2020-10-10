@@ -21,7 +21,7 @@
                   <td>{{ movie.title }}</td>
                   <td>{{ movie.year }}</td>
                   <td><router-link :to="{name: 'edit', params: { id: movie._id }}" class="btn btn-primary">Edit</router-link></td>
-                                    <td><button class="btn btn-danger" @click.prevent="deleteMovie(movie._id)">Delete</button></td>
+                 <td><button class="btn btn-danger" @click.prevent="deleteMovie(movie._id)">Delete</button></td>
                 </tr>
             </tbody>
         </table>
@@ -36,7 +36,7 @@
         }
       },
       created() {
-      let uri = 'http://localhost:4000/movies';
+      let uri = 'http://localhost:8080/movies';
       this.axios.get(uri).then(response => {
         this.movies = response.data;
       });
@@ -44,7 +44,7 @@
     methods: {
       deleteMovie(id)
       {
-        let uri = `http://localhost:4000/movies/delete/${id}`;
+        let uri = `http://localhost:8080/movies/delete/${id}`;
         // eslint-disable-next-line no-unused-vars
         this.axios.delete(uri).then(response => {
           this.movies.splice(this.movies.indexOf(id), 1);

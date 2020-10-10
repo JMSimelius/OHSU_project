@@ -29,11 +29,25 @@
 </style>
 
 <script>
-
     export default{
     }
 </script>
 <!--
+<script>
+import HomeComp from './components/HomeComp.vue'
+export default {
+  name: 'App',
+  components: {
+    HomeComp
+  }
+}
+</script>
+
+
+
+
+
+
 <script>
 import HomeComp from './components/HomeComp.vue'
 
