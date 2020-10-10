@@ -14,17 +14,14 @@
               <th>Title</th>
               <th>Year</th>
               <th>Rating</th>
-              <th>Description</th>
             </tr>
             </thead>
             <tbody>
                 <tr v-for="movie in movies" :key="movie._id">
                   <td>{{ movie.title }}</td>
                   <td>{{ movie.year }}</td>
-                  <td>{{ movie.rating }}</td>
-                  <td>{{ movie.description }}</td>
                   <td><router-link :to="{name: 'edit', params: { id: movie._id }}" class="btn btn-primary">Edit</router-link></td>
-                  <td><button class="btn btn-danger">Delete</button></td>
+                                    <td><button class="btn btn-danger" @click.prevent="deleteMovie(movie._id)">Delete</button></td>
                 </tr>
             </tbody>
         </table>
@@ -43,6 +40,16 @@
       this.axios.get(uri).then(response => {
         this.movies = response.data;
       });
+    },
+    methods: {
+      deleteMovie(id)
+      {
+        let uri = `http://localhost:4000/movies/delete/${id}`;
+        // eslint-disable-next-line no-unused-vars
+        this.axios.delete(uri).then(response => {
+          this.movies.splice(this.movies.indexOf(id), 1);
+        });
+      }
     }
   }
 </script>

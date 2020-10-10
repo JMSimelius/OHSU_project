@@ -33,16 +33,13 @@
     export default{
     }
 </script>
+<!--
 <script>
 import HomeComp from './components/HomeComp.vue'
 
 export default {
-  name: 'App',
-  components: {
-    // eslint-disable-next-line vue/no-unused-components
-    HomeComp
+
   }
-}
 </script>
 
 <style>
@@ -55,3 +52,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+-->
