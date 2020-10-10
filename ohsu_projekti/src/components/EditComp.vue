@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h1>Edit Post</h1>
+    <h1>Edit Movie</h1>
     <form @submit.prevent="updateMovie">
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label>Post Title:</label>
+            <label>Title:</label>
             <input type="text" class="form-control" v-model="movie.title">
           </div>
         </div>
@@ -13,7 +13,7 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label>Post Body:</label>
+              <label>Description:</label>
               <textarea class="form-control" v-model="movie.year" rows="5"></textarea>
             </div>
           </div>
@@ -42,7 +42,7 @@
       methods: {
         updateMovie() {
           let uri = `http://localhost:4000/movies/update/${this.$route.params.id}`;
-          this.axios.movie(uri, this.movie).then(() => {
+          this.axios.post(uri, this.movie).then(() => {
             this.$router.push({name: 'movies'});
           });
         }

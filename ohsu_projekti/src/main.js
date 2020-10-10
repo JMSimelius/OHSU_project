@@ -5,8 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-import VueAxios from 'vue-axios';
 import axios from 'axios';
+import VueAxios from 'vue-axios';
+
 
 Vue.use(VueAxios, axios);
 
