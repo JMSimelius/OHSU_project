@@ -50,8 +50,11 @@
     },
     methods: {
       addMovie(){
-        console.log(this.movie);
-      }
+    let uri = 'http://localhost:4000/movies/add';
+    this.axios.post(uri, this.movie).then(() => {
+       this.$router.push({name: 'movies'});
+    });
+}
     }
   }
 </script>
