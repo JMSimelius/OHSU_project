@@ -13,8 +13,24 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
+              <label>Release year:</label>
+              <input type="text" class="form-control" v-model="movie.year">
+            </div>
+          </div>
+        </div>
+         <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Your rating:</label>
+              <input type="text" class="form-control" v-model="movie.rating">
+            </div>
+          </div>
+        </div>
+         <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
               <label>Description:</label>
-              <textarea class="form-control" v-model="movie.year" rows="5"></textarea>
+              <textarea class="form-control" v-model="movie.description"></textarea>
             </div>
           </div>
         </div><br />
