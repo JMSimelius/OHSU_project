@@ -36,7 +36,8 @@
         }
       },
       created() {
-      let uri = 'http://localhost:8080/movies';
+      let uri = 'http://localhost:4000/movies';
+      //let uri = 'http://localhost:8080/movies';
       this.axios.get(uri).then(response => {
         this.movies = response.data;
       });
@@ -44,7 +45,8 @@
     methods: {
       deleteMovie(id)
       {
-        let uri = `http://localhost:8080/movies/delete/${id}`;
+        let uri = `http://localhost:4000/movies/delete/${id}`;
+        //let uri = `http://localhost:8080/movies/delete/${id}`;
         // eslint-disable-next-line no-unused-vars
         this.axios.delete(uri).then(response => {
           this.movies.splice(this.movies.indexOf(id), 1);

@@ -32,6 +32,11 @@ movieRoutes.route('/').get(function (req, res) {
   });
 });
 
+
+
+
+
+
 // Defined edit route
 movieRoutes.route('/edit/:id').get(function (req, res) {
   let id = req.params.id;

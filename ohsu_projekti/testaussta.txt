@@ -1,0 +1,11 @@
+//GET
+
+
+//POST
+
+./movies/add
+//PUT
+
+
+
+//DELETE
