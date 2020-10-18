@@ -10,6 +10,11 @@ import VueAxios from 'vue-axios';
 
 Vue.use(VueAxios, axios);
 
+// Filtterit
+Vue.filter('snippet', function(value){
+    return value.slice(0,50) +'...';
+});
+
 Vue.config.productionTip = false;
 
 import HomeComp from './components/HomeComp.vue';

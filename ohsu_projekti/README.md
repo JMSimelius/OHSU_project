@@ -1,7 +1,12 @@
 # ohsu_projekti
+Sovellus toimii lokaalisti
 
 ## Project setup
 ```
+If not installed, download MongoDB from here:
+cd api
+npm install
+cd..
 npm install
 ```
 

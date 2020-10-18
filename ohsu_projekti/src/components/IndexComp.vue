@@ -7,11 +7,11 @@
             <router-link :to="{ name: 'create' }" class="btn btn-primary">Add a movie</router-link>
           </div>
         </div><br />
-        
-        <table id="myTable2" class="table table-hover">
+        <input type="text" v-model="search" placeholder="Search movietitles">
+        <table id="Leffat" class="table table-hover">
             <thead>
             <tr>
-              <th onclick="sortTable(0)">Title</th>
+              <th>Title</th>
               <th>Year</th>
               <th>Rating</th>
               <th>Description</th>
@@ -19,13 +19,14 @@
             </tr>
             </thead>
             <tbody>
-                <tr v-for="movie in movies" :key="movie._id">
+                <tr v-for="movie in filteredMovies" :key="movie._id">
                   <td>{{ movie.title }}</td>
                   <td>{{ movie.year }}</td>
                   <td>{{ movie.rating }}</td>
-                  <td>{{ movie.description }}</td>
+                  <td>{{ movie.description | snippet }}</td>
                   <td><router-link :to="{name: 'edit', params: { id: movie._id }}" class="btn btn-primary">Edit</router-link></td>
                  <td><button class="btn btn-danger" @click.prevent="deleteMovie(movie._id)">Delete</button></td>
+                 
                 </tr>
             </tbody>
         </table>
@@ -37,8 +38,11 @@
   export default {
       data() {
         return {
-          movies: []
+          movies: [],
+          search:''
+          
         }
+       
       },
       created() {
       let uri = 'http://localhost:4000/movies';
@@ -58,62 +62,27 @@
         });
       }
     },
-    functions: {
-      sortTable(n) {
-  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("myTable2");
-  switching = true;
-  //Set the sorting direction to ascending:
-  dir = "asc"; 
-  /*Make a loop that will continue until
-  no switching has been done:*/
-  while (switching) {
-    //start by saying: no switching is done:
-    switching = false;
-    rows = table.rows;
-    /*Loop through all table rows (except the
-    first, which contains table headers):*/
-    for (i = 1; i < (rows.length - 1); i++) {
-      //start by saying there should be no switching:
-      shouldSwitch = false;
-      /*Get the two elements you want to compare,
-      one from current row and one from the next:*/
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
-      /*check if the two rows should switch place,
-      based on the direction, asc or desc:*/
-      if (dir == "asc") {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch= true;
-          break;
-        }
-      } else if (dir == "desc") {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch = true;
-          break;
-        }
-      }
-    }
-    if (shouldSwitch) {
-      /*If a switch has been marked, make the switch
-      and mark that a switch has been done:*/
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      //Each time a switch is done, increase this count by 1:
-      switchcount ++;      
-    } else {
-      /*If no switching has been done AND the direction is "asc",
-      set the direction to "desc" and run the while loop again.*/
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
-        switching = true;
-      }
-    }
+    computed:{
+      filteredMovies: function(){
+        return this.movies.filter((movie) =>{
+          return movie.title.toLowerCase().match(this.search.toLowerCase());
+        })
+      },
+   //       sortTable(title, direction){
+   //   this.sort = `${title} > ${direction}`
+   //   if (direction === 'asc') {
+   //     this.movies.sort((a, b) => a[title] > b[title] ? 1: -1)
+   //   } else {
+   //     this.movies.sort((a, b) => a[title] < b[title] ? 1: -1)
+   //   }
+   // }
   }
-}
-    }
-  }
+      //sortedMovies: function(){
+      //  return this.movies.sort((movie) =>{
+      //    return movie.title.toLowerCase().match(this.search.toLowerCase());
+      //  })
+      }
+    
+
   
 </script>

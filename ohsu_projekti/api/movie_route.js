@@ -1,12 +1,10 @@
-// post.model.js
-
 const express = require('express');
 const movieRoutes = express.Router();
 
-// Require Post model in our routes module
+
 let Movie = require('./movie_model');
 
-// Defined store route
+// ADD
 movieRoutes.route('/add').post(function (req, res) {
   let movie = new Movie(req.body);
   movie.save()
@@ -18,7 +16,7 @@ movieRoutes.route('/add').post(function (req, res) {
     });
 });
 
-// Defined get data(index or listing) route
+// GET
 movieRoutes.route('/').get(function (req, res) {
     console.log("Pääseekö tähän");
     Movie.find(function(err, movies){
@@ -26,18 +24,12 @@ movieRoutes.route('/').get(function (req, res) {
       res.json(err);
     }
     else {
-        console.log("Pääseekö tähän");
       res.json(movies);
     }
   });
 });
 
-
-
-
-
-
-// Defined edit route
+// EDIT
 movieRoutes.route('/edit/:id').get(function (req, res) {
   let id = req.params.id;
   Movie.findById(id, function (err, movie){
@@ -48,7 +40,7 @@ movieRoutes.route('/edit/:id').get(function (req, res) {
   });
 });
 
-//  Defined update route
+//  UPDATE
 movieRoutes.route('/update/:id').post(function (req, res) {
     Movie.findById(req.params.id, function(err, movie) {
     if (!movie)
@@ -68,7 +60,7 @@ movieRoutes.route('/update/:id').post(function (req, res) {
   });
 });
 
-// Defined delete | remove | destroy route
+// DELETE
 movieRoutes.route('/delete/:id').delete(function (req, res) {
     Movie.findByIdAndRemove({_id: req.params.id}, function(err){
         if(err) res.json(err);
