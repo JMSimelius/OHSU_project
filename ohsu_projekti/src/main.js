@@ -10,9 +10,9 @@ import VueAxios from 'vue-axios';
 
 Vue.use(VueAxios, axios);
 
-// Filtterit
+// Filttertest, shows only first 25 letters of Description
 Vue.filter('snippet', function(value){
-    return value.slice(0,50) +'...';
+    return value.slice(0,25) +'...';
 });
 
 Vue.config.productionTip = false;

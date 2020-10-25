@@ -46,7 +46,6 @@
       },
       created() {
       let uri = 'http://localhost:4000/movies';
-      //let uri = 'http://localhost:8080/movies';
       this.axios.get(uri).then(response => {
         this.movies = response.data;
       });
@@ -55,7 +54,6 @@
       deleteMovie(id)
       {
         let uri = `http://localhost:4000/movies/delete/${id}`;
-        //let uri = `http://localhost:8080/movies/delete/${id}`;
         // eslint-disable-next-line no-unused-vars
         this.axios.delete(uri).then(response => {
           this.movies.splice(this.movies.indexOf(id), 1);
@@ -68,21 +66,6 @@
           return movie.title.toLowerCase().match(this.search.toLowerCase());
         })
       },
-   //       sortTable(title, direction){
-   //   this.sort = `${title} > ${direction}`
-   //   if (direction === 'asc') {
-   //     this.movies.sort((a, b) => a[title] > b[title] ? 1: -1)
-   //   } else {
-   //     this.movies.sort((a, b) => a[title] < b[title] ? 1: -1)
-   //   }
-   // }
+    }
   }
-      //sortedMovies: function(){
-      //  return this.movies.sort((movie) =>{
-      //    return movie.title.toLowerCase().match(this.search.toLowerCase());
-      //  })
-      }
-    
-
-  
 </script>

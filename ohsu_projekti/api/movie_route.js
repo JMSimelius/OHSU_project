@@ -9,16 +9,16 @@ movieRoutes.route('/add').post(function (req, res) {
   let movie = new Movie(req.body);
   movie.save()
     .then(() => {
-      res.status(200).json({'business': 'business in added successfully'});
+      res.status(200).json({'movie': 'movie added'});
     })
     .catch(() => {
-      res.status(400).send("unable to save to database");
+      res.status(400).send("movie add failed");
     });
 });
 
 // GET
 movieRoutes.route('/').get(function (req, res) {
-    console.log("Pääseekö tähän");
+    console.log("Test '/' ");
     Movie.find(function(err, movies){
     if(err){
       res.json(err);
@@ -44,17 +44,17 @@ movieRoutes.route('/edit/:id').get(function (req, res) {
 movieRoutes.route('/update/:id').post(function (req, res) {
     Movie.findById(req.params.id, function(err, movie) {
     if (!movie)
-      res.status(404).send("data is not found");
+      res.status(404).send("movie is not found");
     else {
         movie.title = req.body.title;
         movie.year = req.body.year;
         movie.rating = req.body.rating;
         movie.description = req.body.description;
         movie.save().then(() => {
-          res.json('Update complete');
+          res.json('Movie update done');
       })
       .catch(() => {
-            res.status(400).send("unable to update the database");
+            res.status(400).send("unable to update movie");
       });
     }
   });
@@ -64,7 +64,7 @@ movieRoutes.route('/update/:id').post(function (req, res) {
 movieRoutes.route('/delete/:id').delete(function (req, res) {
     Movie.findByIdAndRemove({_id: req.params.id}, function(err){
         if(err) res.json(err);
-        else res.json('Successfully removed');
+        else res.json('Movie deleted');
     });
 });
 

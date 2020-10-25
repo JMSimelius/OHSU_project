@@ -40,22 +40,7 @@
     </form>
   </div>
 </template>
-<!--
-<script>
-    export default {
-        data(){
-        return {
-          movie:{}
-        }
-    },
-    methods: {
-      addMovie(){
-        console.log(this.movie);
-      }
-    }
-  }
-</script> 
--->
+
 <script>
     export default {
         data(){
@@ -66,8 +51,7 @@
     methods: {
       addMovie(){
     let uri = 'http://localhost:4000/movies/add';
-    //let uri = 'mongodb+srv://TestUser:testuser@cluster0.jel17.mongodb.net/simelius?retryWrites=true&w=majority/movies/add';
-    this.axios.post(uri, this.movie).then(() => {
+      this.axios.post(uri, this.movie).then(() => {
        this.$router.push({name: 'movies'});
     });
    }
