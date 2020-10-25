@@ -1,13 +1,24 @@
 # ohsu_projekti
-Sovellus toimii lokaalisti
+Projektina on tietokantasovellus, joka on yhteydessä
+MongoDB-tietokantaan. Sovelluksessa voi lisätä, muokata ja poistaa
+elokuvia tietokantaan. 
 
 ## Project setup
 ```
-If not installed, download MongoDB from here:
-cd api
-npm install
-cd..
-npm install
+Kloonaa repositorio
+Asenna backend:
+-cd api
+-npm install
+-cd..
+
+Tämän jälkeen asenna sovellus:
+-npm install
+
+Käynnistys:
+-npm run serve
+
+
+
 ```
 
 ### Compiles and hot-reloads for development
